@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-darkest: #0A1119;
+  --color-bg-base: #141B21;
+  --color-bg-panel: #1F262D;
+  --color-border-default: #323A41;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #808F98;
+  --color-text-calm: #B5BEC3;
+  --color-primary: #0083FF;
+  --color-orange: #D1733E;
+  --color-success: #65B686;
+  --color-warning: #D1A33E;
+  --color-danger: #E05260;
+  --font-body: 'Lato', sans-serif;
+  --font-title: 'Bricolage Grotesque', sans-serif;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(40px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes dotReveal {
+  from { opacity: 0; }
+}
+
+@layer base {
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--color-bg-base);
+    color: var(--color-text-primary);
+    font-family: var(--font-body);
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr) 36px;
+    grid-template-rows: auto minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) auto;
+    gap: 2px;
+    padding: 18px 0 32px 32px;
+    position: relative;
+    height: calc(100vh - 56px);
+  }
+
+  @media (max-width: 1536px) {
+    .dashboard-grid {
+      grid-template-rows: auto minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) auto;
+      padding: 14px 0 20px 24px;
+    }
+  }
+
+  @media (max-width: 1280px) {
+    .dashboard-grid {
+      padding: 16px 24px 24px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .dashboard-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+      gap: 8px;
+      padding: 12px 12px 20px;
+      height: auto;
+      min-height: 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .dashboard-grid {
+      grid-template-columns: 1fr;
+      padding: 10px;
+    }
+  }
+}
